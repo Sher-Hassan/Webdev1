@@ -1,0 +1,89 @@
+/* Top navigation bar styles */
+
+:root{
+	--nav-height: 64px;
+	--nav-bg: #ffd600;
+	--nav-text: #000000;
+}
+
+.nav-wrap{
+	/* floating fixed nav with small gap from top and sides */
+	position: fixed;
+	top: 12px;
+	left: 33px;
+	right: 33px;
+	background: var(--nav-bg);
+	box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+	z-index: 120;
+}
+
+.nav-inner{
+	max-width: 1400px;
+	margin: 0 auto;
+	height: var(--nav-height);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 28px;
+	box-sizing: border-box;
+}
+
+.nav-left{
+	display:flex;
+	align-items:center;
+	gap:12px;
+}
+
+.nav-logo-square{
+	width:18px;
+	height:18px;
+	background:#000;
+	display:inline-block;
+}
+
+.nav-brand{
+	font-family: var(--font-family, 'Montserrat', sans-serif);
+	color: var(--nav-text);
+	font-weight: 500;
+	letter-spacing: 0.06em;
+}
+
+.nav-right{
+	display:flex;
+	align-items:center;
+	gap:20px;
+}
+
+.nav-links{
+	display:flex;
+	gap:28px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	align-items:center;
+}
+
+.nav-link{
+	color: var(--nav-text);
+	text-decoration: none;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+}
+
+.nav-cta{
+	margin-left: 8px;
+}
+
+/* Override Btn2 border color when used inside the nav */
+.nav-cta .Btn2-slide{
+	border: 2px solid #000000; /* black border specifically for nav */
+}
+.nav-link-products{
+    border: 2px solid #000;
+}
+
+/* small screens: compress spacing */
+@media (max-width: 720px){
+	.nav-inner{padding: 0 12px}
+	.nav-links{gap:12px}
+}

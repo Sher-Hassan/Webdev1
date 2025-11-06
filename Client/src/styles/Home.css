@@ -1,0 +1,932 @@
+/* Home hero styles to match the provided design image */
+
+/* Import a web-hosted substitute for Gilroy (Montserrat chosen as a close alternative) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+
+
+:root{
+	--yellow: #ffd900;
+	--black: #080808;
+	/* Headline font variables (original values preserved; 'framer' prefix removed) */
+	/* Use a hosted substitute; if you later provide Gilroy files/URLs, replace this value */
+	--font-family: "Montserrat", sans-serif;
+	--font-open-type-features: "blwf" on, "cv09" on, "cv03" on, "cv04" on, "cv11" on;
+	--font-size: 86px;
+	/* headline scale factors for each stacked line */
+	--font-scale-1: 1.09375; /* ~105px */
+	--font-scale-2: 1;       /* 96px */
+	--font-scale-3: 1;       /* 96px */
+	--font-scale-4: 1.25;    /* 120px */
+	--font-style: normal;
+	--font-variation-axes: normal;
+	--font-weight: 400;
+	--letter-spacing: -.03em;
+	--line-height: 92%;
+	--paragraph-spacing: 32px;
+	--text-alignment: left;
+	--text-color: var(--token-2518fbcd-8b7e-4792-b3f7-d203f956a3fe, #ffd900);
+	--text-decoration: none;
+	--text-stroke-color: initial;
+	--text-stroke-width: initial;
+	--text-transform: uppercase;
+
+	/* noise control */
+	--noise-opacity: 15; /* increase for verification; reduce to 0.02-0.03 for final subtlety */
+	--noise-opacity-2: 30;
+}
+
+.home-container-1{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 4rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+
+
+
+/* Animated, barely-visible TV-style grain overlay (moving dots).
+   Use two separate pseudo-elements (::before and ::after) with independent
+   animations to avoid synchronized motion and create a natural noise effect. */
+body::before{
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	/* place the noise behind the UI by default (0), so content with z-index > 0 sits above it */
+	z-index: 0;
+
+	/* primary subtle dot layer covering the entire viewport */
+	/* three independent dot sub-layers (different sizes/opacities) */
+	background-image:
+		radial-gradient(rgba(255,255,255,0.035) 0.6px, transparent 0.6px),
+		radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+		radial-gradient(rgba(255,255,255,0.018) 0.45px, transparent 0.45px);
+	background-size: 6px 6px, 10px 10px, 4px 4px;
+	background-position: 0 0, 0 0, 0 0;
+	opacity: var(--noise-opacity);
+	/* animate each sub-layer with different movement vectors (comma-separated) */
+	animation: home-noise-move-1 28s linear infinite;
+}
+
+body::after{
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	/* keep the secondary noise layer at the same baseline behind UI */
+	z-index: 0;
+
+	/* secondary layer with different density and movement */
+	/* two additional sub-layers to further de-synchronize noise */
+	background-image:
+		radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+		radial-gradient(rgba(255,255,255,0.012) 0.8px, transparent 0.8px);
+	background-size: 9px 9px, 7px 7px;
+	background-position: 0 0, 0 0;
+	opacity: var(--noise-opacity-2);
+	animation: home-noise-move-2 36s linear infinite;
+}
+
+/* The noise overlay now covers the whole viewport via body::before/::after. */
+/* pointer-events: none keeps UI interactions working through the overlay. */
+
+@keyframes home-noise-move-1{
+	from{
+		background-position: 0 0, 0 0, 0 0;
+	}
+	to{
+		background-position: 220px 140px, -180px -100px, 160px -120px;
+	}
+}
+
+@keyframes home-noise-move-2{
+	from{
+		background-position: 0 0, 0 0;
+	}
+	to{
+		background-position: -160px -200px, 200px 120px;
+	}
+}
+
+/* Hero section styles */
+
+.hero{
+	width: 100%;
+	max-width: 1400px;
+    position: absolute;
+    top: 15%;
+}
+
+.cards-row{
+	margin-top: 3.5rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	align-items: stretch;
+	/* place the cards at the vertical end of the viewport/container */
+	align-self: flex-start;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.hero-left{
+	width: 60%; /* keep content on left like the mock */
+}
+
+ .headline{
+	line-height: 0.9; /* tightened per request */
+}
+
+.home-t{
+	margin: 0;
+	padding: 0;
+	/* use headline variables (removed 'framer' prefix) */
+	font-family: var(--font-family);
+	font-style: var(--font-style);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	text-transform: var(--text-transform);
+	color: var(--text-color, var(--yellow));
+	letter-spacing: var(--letter-spacing);
+	/* numeric equivalent for percentage line-height */
+	line-height: 0.92; /* equivalent to 92% */
+	/* OpenType features (explicitly enable listed features) */
+	font-feature-settings: "blwf" 1, "cv09" 1, "cv03" 1, "cv04" 1, "cv11" 1;
+	/* slightly negative margin to pull stacked words closer */
+	margin-bottom: -0.2rem;
+    gap: 25px;
+}
+
+.home-t1{
+	font-size: calc(var(--font-size) * var(--font-scale-1));
+    display: flex;
+}
+.home-t2{
+	font-size: calc(var(--font-size) * var(--font-scale-2));
+    display: flex;
+
+}
+
+
+.hero-sub{
+	margin-top: 1.2rem; /* tightened spacing */
+    font-family: var(--font-family);
+	color: var(--yellow);
+	opacity: 0.95;
+	font-size: 0.95rem;
+	max-width: 36rem;
+	letter-spacing: 0.02em;
+    padding-left: 10px;
+}
+
+.hero-ctas{
+	margin-top: 1.2rem; /* tightened spacing */
+	display: flex;
+	gap: 1rem;
+    padding-left: 10px;
+}
+
+/* Ensure the imported Btn components align nicely */
+.hero-ctas > *{
+	/* the Btn components include their own styles; these helpers align them */
+	display: inline-flex;
+	align-items: center;
+}
+
+.home-container-2{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 4rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+
+.home-container-3{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 4rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+
+.home-container-4{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 4rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+.home-container-5{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 4rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+
+.home-container-6{
+	min-height: 100vh;
+	background-color: var(--black);
+	color: var(--yellow);
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	padding: 0rem 1.4rem;
+	box-sizing: border-box;
+	/* subtle grain/noise using tiny radial dots */
+		background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+		background-size: 3px 3px;
+    position: relative;
+}
+ 
+/* About section styles */
+
+.About-app{
+	width: 100%;
+	max-width: 1400px;
+    position: absolute;
+    top: 15%;
+}
+
+.About-sub{
+	margin: 1.7rem 0; /* tightened spacing */
+    font-family: var(--font-family);
+	color: var(--yellow);
+	opacity: 0.95;
+	font-size: 1.1rem;
+	max-width: 36rem;
+	letter-spacing: 0.02em;
+    padding-left: 10px;
+	padding-top: 100px;
+}
+
+.About-left{
+	width: 60%; /* keep content on left like the mock */
+}
+
+ .About-headline{
+	line-height: 0.9; /* tightened per request */
+}
+
+.About-t{
+	margin: 0;
+	padding: 0;
+	/* use headline variables (removed 'framer' prefix) */
+	font-family: var(--font-family);
+	font-style: var(--font-style);
+	font-weight: var(--font-weight);
+	font-size: var(--font-size);
+	text-transform: var(--text-transform);
+	color: var(--text-color, var(--yellow));
+	letter-spacing: var(--letter-spacing);
+	/* numeric equivalent for percentage line-height */
+	line-height: 0.92; /* equivalent to 92% */
+	/* OpenType features (explicitly enable listed features) */
+	font-feature-settings: "blwf" 1, "cv09" 1, "cv03" 1, "cv04" 1, "cv11" 1;
+	/* slightly negative margin to pull stacked words closer */
+	margin-bottom: -0.2rem;
+    gap: 25px;
+}
+
+.About-t-all{
+	font-size: calc(var(--font-size) * 0.67);
+	gap: 10px;
+    display: flex;
+}
+
+.About-Words{
+	margin: 0 8px;
+}
+.About-cards-row{
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	align-items: stretch;
+	/* place the cards at the vertical end of the viewport/container */
+	align-self: flex-start;
+
+}
+
+
+.About-cards-row{
+	padding-top: 85px;
+}
+
+/* Hero section styles */
+
+.moving-strip {
+	width: 99vw; /* full viewport width */
+	overflow: hidden;
+	background-color: #120f00;
+	display: flex;
+	align-items: center;
+	position: relative;
+	height: 60px; /* slim strip like reference */
+	user-select: none;
+	border-top: 2px solid var(--yellow);
+	box-sizing: border-box;
+	z-index: 10;
+}
+
+.strip-content {
+	display: flex;
+	align-items: center;
+	/* the tracks inside are duplicated in the component for seamless scroll */
+	animation: scroll-left 22s linear infinite;
+	will-change: transform;
+}
+
+.track {
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+}
+
+.strip-item {
+	display: inline-flex;
+	align-items: center;
+	margin-right: 28px;
+}
+
+.square {
+	width: 10px;
+	height: 10px;
+	background: var(--yellow);
+	margin-right: 12px;
+	display: inline-block;
+	flex: 0 0 auto;
+	border-radius: 1px;
+}
+
+.label {
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	transform: translateY(-1px);
+}
+
+.moving-strip:hover .strip-content {
+	animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+	from { transform: translateX(0); }
+	to   { transform: translateX(-50%); }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	.strip-content { animation: none; }
+}
+
+/* --- Section 3: fullscreen-ish video with yellow overlay, caption, corner marks and center plus --- */
+.home-container-3 {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 3rem 1.4rem 6rem 1.4rem;
+	box-sizing: border-box;
+}
+
+.home-section-3 {
+	width: 100%;
+	max-width: 100vw;
+	height: 640px;
+	background: #000;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 2px solid var(--black); /* base to keep outer dark frame */
+}
+
+.home-section-3 .bg-video{
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: grayscale(20%);
+	transform-origin: center;
+	z-index: 0;
+}
+
+.home-section-3 .video-overlay{
+	position: absolute;
+	inset: 0;
+	/* ensure the requested color overlay is above the video */
+	background: rgba(255, 191, 0, 0.02);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* yellow tint on top to match reference */
+.home-section-3::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	/* requested overlay color #d7b700 with subtle opacity */
+	background: rgba(215,183,0,0.16);
+	pointer-events: none;
+	z-index: 1; /* keep behind the main overlay element */
+}
+
+/* thin yellow border lines at very edge */
+.home-section-3::after{
+	content: '';
+	position: absolute;
+	inset: 0;
+	border: 0.5px solid rgba(215,183,0,0.95); /* match #d7b700 */
+	pointer-events: none;
+	box-sizing: border-box;
+	z-index: 5; /* keep frame above video and overlay */
+}
+
+/* center plus mark */
+.center-plus{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 36px;
+	height: 36px;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	z-index: 6;
+}
+.center-plus .plus-vertical,
+.center-plus .plus-horizontal{
+	position: absolute;
+	background: rgba(215,183,0,0.65);
+}
+.center-plus .plus-vertical{
+	width: 2px;
+	height: 42px;
+}
+.center-plus .plus-horizontal{
+	height: 2px;
+	width: 42px;
+}
+
+/* corner marks (L-shaped) */
+.home-section-3 .corner{
+	position: absolute;
+	width: 26px;
+	height: 26px;
+	pointer-events: none;
+	z-index: 6;
+}
+.home-section-3 .corner::before,
+.home-section-3 .corner::after{
+	content: '';
+	position: absolute;
+	background: rgba(215,183,0,0.95);
+}
+/* larger L-shaped corner marks */
+.home-section-3 .corner{
+	position: absolute;
+	width: 40px;   /* increased from 26px */
+	height: 40px;  /* increased from 26px */
+	pointer-events: none;
+	z-index: 6;
+}
+
+.home-section-3 .corner.top-left{ top: 14px; left: 14px; }
+.home-section-3 .corner.top-left::before{ left: 0; top: 0; width: 40px; height: 2px; }
+.home-section-3 .corner.top-left::after{ left: 0; top: 0; width: 2px; height: 40px; }
+
+.home-section-3 .corner.top-right{ top: 14px; right: 14px; }
+.home-section-3 .corner.top-right::before{ right: 0; top: 0; width: 40px; height: 2px; }
+.home-section-3 .corner.top-right::after{ right: 0; top: 0; width: 2px; height: 40px; }
+
+.home-section-3 .corner.bottom-left{ bottom: 14px; left: 14px; }
+.home-section-3 .corner.bottom-left::before{ left: 0; bottom: 0; width: 40px; height: 2px; }
+.home-section-3 .corner.bottom-left::after{ left: 0; bottom: 0; width: 2px; height: 40px; }
+
+.home-section-3 .corner.bottom-right{ bottom: 14px; right: 14px; }
+.home-section-3 .corner.bottom-right::before{ right: 0; bottom: 0; width: 40px; height: 2px; }
+.home-section-3 .corner.bottom-right::after{ right: 0; bottom: 0; width: 2px; height: 40px; }
+
+/* bottom caption */
+.section-caption{
+	position: absolute;
+	left: 50%;
+	bottom: 18px;
+	transform: translateX(-50%);
+	color: rgba(215,183,0,0.95);
+	font-family: var(--font-family);
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	padding: 6px 10px;
+	/* border-top: 1px solid rgba(215,183,0,0.95);
+	border-bottom: 1px solid rgba(215,183,0,0.95); */
+	background: transparent;
+	z-index: 6;
+}
+
+@media (max-width: 780px){
+	.home-section-3{ height: 420px; }
+	.section-caption{ font-size: 10px; bottom: 12px; }
+}
+
+/* --- Section 4: centered grid background faded to the sides with top border --- */
+.home-section-4{
+	/* make this section full-bleed and full-height */
+	position: relative;
+	width: 99.5vw; /* full viewport width */
+	margin-left: calc(50% - 50vw); /* align full-bleed inside centered layout */
+	margin-right: calc(50% - 50vw);
+	height: 100vh; /* full viewport height */
+	overflow: hidden;
+	background:
+		linear-gradient(90deg, rgba(8,8,8,1) 0%, rgba(8,8,8,0) 12%, rgba(8,8,8,0) 88%, rgba(8,8,8,1) 100%),
+		url('../assets/CTA-bg.png') center/cover no-repeat;
+	background-color: transparent;
+	box-sizing: border-box;
+}
+
+.home-section-4::before{
+	/* thin border on top (subtle yellow) */
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 2px;
+	background: rgba(215,183,0,0.95);
+	z-index: 4;
+}
+
+
+
+
+.home-section-4 .CTA{
+	position: absolute;
+	left: 50%;
+	top: 36%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	justify-content: center;
+	z-index: 6;
+}
+
+.home-section-4 .cta-btn{ display: inline-block; }
+.home-section-4 .btn1-wrap{ margin-right: 6px; }
+.home-section-4 .btn2-wrap{ margin-left: 6px; }
+
+/* heading for section-4 (large centered CTA headline) */
+.home-section-4 .CTA-heading{
+	position: absolute;
+	left: 50%;
+	top: 13%;
+	transform: translateX(-50%);
+	z-index: 6;
+	max-width: 1100px;
+	width: calc(100% - 120px);
+	text-align: center;
+}
+.home-section-4 .CTA-heading h1{
+	margin: 0;
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 0.95;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+@media (max-width: 900px){
+	.home-section-4 .CTA-heading{ top: 8%; }
+	.home-section-4 .CTA-heading h1{ font-size: clamp(20px, 8vw, 36px); }
+	.home-section-4 .CTA{ top: 34%; }
+}
+
+/* --- Section 5: Products grid with left nav and right detail panel --- */
+.home-container-5{
+	background: var(--black);
+	color: var(--yellow);
+	padding: 4rem 1.4rem 6rem 1.4rem;
+	box-sizing: border-box;
+}
+
+.products-section{
+	max-width: 100vw;
+	height: 100%;
+	margin: 0 auto;
+	display: grid; 
+	grid-template-columns: 30vw 1fr;
+	gap: 28px;     
+	align-items: start;
+	position: relative;
+    top: 45px;
+}
+
+/* .products-left{} */
+.products-heading{
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-size: 48px;
+	line-height: 0.95;
+	margin: 0 0 28px 0;
+	text-transform: uppercase;
+}
+
+.products-list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.products-item{
+	background: rgba(42,35,0,0.03);
+	border: 1px solid rgba(255,217,0,0.06);
+	padding: 18px 20px;
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-size: 18px;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	position: relative;
+	overflow: hidden;
+	width: 30vw;
+	height: 100%;
+}
+.products-item.active{
+	background: rgba(215,183,0,0.06);
+	border-left: 4px solid rgba(215,183,0,0.95);
+}
+.products-icon{ display:inline-block; width:28px; text-align:center; }
+
+/* hover fill effect: expand a deeper yellow layer left-to-right */
+.products-item::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 0;
+	background: rgba(215,183,0,0.18);
+	transition: width 860ms ease;
+	z-index: 0;
+}
+.products-item:hover::before{ width: 100%; }
+.products-item.active::before{ width: 100%; }
+
+/* keep text/icons above the fill */
+.products-item .products-icon,
+.products-item .products-label{ position: relative; z-index: 2; }
+
+.products-right{
+	display: block;
+	width: 63vw;
+	height: 100%;
+	border-top: 1px solid #ffd900; 
+	background: url('../assets/products-bg.png') center/cover no-repeat;
+}
+.products-panel{
+	position: relative;
+	min-height: 420px;
+	background: rgba(215,183,0,0.03);
+	border: 1px solid rgba(215,183,0,0.06);
+	padding: 10px;
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 100%;
+}
+.products-panel-grid{
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 56%;
+	background-image:
+		linear-gradient(rgba(215,183,0,0.04) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(215,183,0,0.04) 1px, transparent 1px);
+	background-size: 48px 48px, 48px 48px;
+	opacity: 0.6;
+	pointer-events: none;
+}
+.products-title{
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-size: 48px;
+	margin: 0 0 18px 0;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.products-desc{
+	color: rgba(215,183,0,0.95);
+	font-family: var(--font-family);
+	max-width: 56ch;
+	margin-top: 80px;
+	line-height: 1.3;
+	font-weight: 500;
+	position: absolute;
+	bottom: 15px;
+	width: calc(100% - 40px);
+}
+
+@media (max-width: 900px){
+	.products-section{ grid-template-columns: 1fr; }
+	.products-panel-grid{ display:none; }
+	.products-heading{ font-size: 32px; }
+	.products-title{ font-size: 28px; }
+}
+
+
+
+@media (max-width: 900px){
+	.home-section-4{ height: 420px; }
+	.home-section-4 .grid-bg{ width: 900px; height: 600px; background-size: 36px 36px; }
+}
+
+/* --- FAQ section (home-container-6) --- */
+.faq-section{
+	max-width: 1100px;
+	margin: 2.2rem auto 2rem auto;
+	padding: 0 1.4rem;
+}
+.faq-pretitle{
+	color: rgba(215,183,0,0.95);
+	text-align: center;
+	font-family: var(--font-family);
+	font-size: 1.1rem;
+	letter-spacing: 0.18em;
+	margin: 0 0 10px 0;
+	text-transform: uppercase;
+	opacity: 0.95;
+}
+.faq-heading{
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-size: 56px;
+	text-align: center;
+	line-height: 0.9;
+	margin: 40px 0 28px 0;
+	text-transform: uppercase;
+}
+.faq-list{ list-style: none; margin: 0; padding: 0; display: block; }
+.faq-item{ 
+	margin: 18px 0; 
+	background: rgba(8,8,8,0.6);
+	border: 1px solid rgba(215,183,0,0.12);
+	box-shadow: 0 0 0 1px rgba(255,255,255,0.01) inset;
+	overflow: hidden;
+	/* animate container height so siblings shift smoothly */
+	max-height: 70px; /* collapsed box height */
+		transition: max-height 320ms ease;
+		position: relative;
+		z-index: 6;
+		border-top: #ffd900 1px solid;
+}
+.faq-item.open{
+	/* allow expansion; provide a generous max to fit content + header */
+	max-height: 520px; /* header (70) + body (~450) — large enough for content */
+}
+.faq-question{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 0 26px; /* horizontal padding only; header provides fixed height via container */
+	height: 70px; /* ensure the clickable header is 70px tall */
+	background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.25));
+	border: none;
+	color: var(--yellow);
+	font-family: var(--font-family);
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	cursor: pointer;
+		position: relative;
+		z-index: 7;
+}
+.faq-toggle{ font-size: 22px; line-height: 1; color: rgba(215,183,0,0.95); }
+.faq-qtext{ flex: 1 1 auto; text-align: left; }
+.faq-body{
+	/* keep body padding collapsed when container is closed so the collapsed height is exact */
+	padding: 0 26px 0 26px;
+	font-family: var(--font-family);  
+	color: rgba(215,183,0,0.9);
+	background: rgba(0,0,0,0.6);
+	opacity: 0;
+	transition: opacity 220ms ease, padding 260ms ease;
+	overflow: hidden;
+		position: relative;
+		z-index: 6;
+	border-top: 0.3px solid rgba(255,217,0,0.2);
+}        
+.faq-item.open .faq-body{ 
+	opacity: 1; 
+	padding: 18px 26px 28px 26px; /* restore padding when open */
+}
+.faq-item.open .faq-question{ border-bottom: 1px solid rgba(215,183,0,0.06); }
+/* --- Footer styles --- */
+.footer-bg{
+	background-color: var(--black);
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	box-sizing: border-box;
+	align-items: center;
+}
+.site-footer{
+	width: 97%;
+	background: #0b0b05;
+	border-top: 2px solid rgba(215,183,0,0.95);
+	box-sizing: border-box;
+	padding: 22px 0;
+	color: var(--yellow);
+}
+.site-footer-inner{
+	max-width: 1400px;
+	margin: 0 auto;
+	display: flex;
+	align-items: flex-start;
+}
+.footer-col{ min-width: 0; }
+.footer-links{ width: 320px; }
+.footer-title{
+	margin: 0 0 28px 0;
+	color: #897400;
+	font-family: var(--font-family);
+	font-size: 14px;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+.footer-list{ list-style: none; margin: 0; padding: 0; }
+.footer-list li{ margin: 14px 0; }
+.footer-link{
+	color: var(--yellow);  
+	text-decoration: none;
+	font-family: var(--font-family);
+	letter-spacing: 0.06em;
+	font-size: 13px;   
+}  
+.footer-spacer{ flex: 1 1 auto; }
+
+@media (max-width: 900px){
+	.site-footer-inner{ flex-direction: column; gap: 18px; }
+	.footer-links{ width: 100%; }
+}
+@media (max-width: 900px){
+	.faq-heading{ font-size: 32px; }
+	.faq-question{ padding: 16px 18px; }
+	.faq-body{ padding: 14px 18px 20px 18px; }
+}
