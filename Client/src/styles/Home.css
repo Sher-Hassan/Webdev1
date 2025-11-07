@@ -678,8 +678,8 @@ body::after{
 
 @media (max-width: 900px){
 	.home-section-4 .CTA-heading{ top: 8%; }
-	.home-section-4 .CTA-heading h1{ font-size: clamp(20px, 8vw, 36px); }
-	.home-section-4 .CTA{ top: 50%; }
+	.home-section-4 .CTA-heading h1{  font-size: clamp(20px, 20vw, 33px); }
+	.home-section-4 .CTA{ top: 50%; }  
 }
 
 /* --- Section 5: Products grid with left nav and right detail panel --- */
@@ -901,7 +901,7 @@ body::after{
 	.center-plus .plus-horizontal{ width: 32px }
 
 	/* CTA section: reduce headline and center layout */
-	.home-section-4 .CTA-heading h1{ font-size: clamp(20px, 6vw, 36px) }
+	.home-section-4 .CTA-heading h1{ font-size: clamp(20px, 20vw, 33px); }
 }
 
 @media (max-width: 800px){
@@ -909,6 +909,37 @@ body::after{
 	:root{ --font-size: clamp(22px, 8.5vw, 72px); }
 	.products-item{ padding: 12px 14px }
 	.products-title{ font-size: 22px }
+
+/* make CTA buttons in section-4 match hero CTAs on narrower widths (<=800px) */
+@media (max-width: 800px){
+	.home-section-4 .CTA{
+		position: static;
+		transform: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		align-items: stretch;
+		margin-top: 10px;
+		padding: 0 12px;
+	}
+
+	.home-section-4 .cta-btn{ width: 100%; display: block; box-sizing: border-box }
+	.home-section-4 .btn1-wrap, .home-section-4 .btn2-wrap{ width: 100%; margin: 0 }
+
+	/* target both Btn1/Btn2 class name variants to be safe */
+	.home-section-4 .Btn1-slide, .home-section-4 .btn1-slide,
+	.home-section-4 .Btn2-slide, .home-section-4 .btn2-slide{
+		width: 100% !important;
+		display: inline-block;
+		box-sizing: border-box;
+		padding-left: 12px !important;
+		padding-right: 12px !important;
+	}
+
+	/* ensure primary CTA looks solid and secondary is outlined similar to hero */
+	.home-section-4 .btn1-slide, .home-section-4 .Btn1-slide{ background-color: #ffd900; color: #000; border-color: #ffd900 }
+	.home-section-4 .btn2-slide, .home-section-4 .Btn2-slide{ background-color: #000; color: #ffd900; border-color: #ffd900 }
+}
 	.products-desc{ font-size: 14px; margin-top: 36px }
 	.faq-heading{ font-size: 24px }
 	.site-footer-inner{ padding: 12px }
@@ -977,7 +1008,7 @@ body::after{
 
 
 @media (max-width: 900px){
-	.home-section-4{ height: 420px; }
+	.home-section-4{ height: 90vh; }
 	.home-section-4 .grid-bg{ width: 900px; height: 600px; background-size: 36px 36px; }
 }
 @media (max-width: 500px){
@@ -1122,6 +1153,5 @@ body::after{
 }  
 @media (max-width: 500px){
 	.faq-heading{ font-size: 6vw; }
-
 
 }
