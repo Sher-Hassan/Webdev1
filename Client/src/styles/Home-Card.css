@@ -87,11 +87,35 @@
 }
 
 /* small layout helpers */
-@media (max-width: 560px){
+@media (max-width: 800px){
   .HC-card{padding: 20px}
   .HC-title{font-size:18px}
   .HC-sub{font-size:13px}
   .HC-desc{font-size:12px}
+}
+
+/* Tight mobile layout for About cards (<=420px) */
+@media (max-width: 800px){
+  .About-cards-row .HC-card{  
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 18px; 
+    min-height: 160px;
+    justify-content: flex-start;
+  }
+  .About-cards-row .HC-title{
+    font-size: 28px;
+    line-height: 1.03;
+    margin-bottom: 12px;
+  }
+  .About-cards-row .HC-desc{
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .About-cards-row .HC-grid{ background-size: 36px 36px, 36px 36px; opacity: 0.9 }
 }
 
 .About-cards-row .HC-card{
@@ -102,7 +126,7 @@
   padding: 28px 15px;
   color: var(--text-color, #ffd900);
   overflow: hidden;
-  width: 47.2vw;
+  width: 46vw;
   height: 350px;
   box-shadow: 0 2px 18px rgba(0,0,0,0.6);
   font-family: var(--font-family, 'Montserrat', sans-serif);
