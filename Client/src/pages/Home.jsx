@@ -59,25 +59,30 @@ export default function Home() {
   const faqs = [
     {
       q: 'HOW DOES APP ENSURE PRIVACY?',
-      a: `APP USES DISPOSABLE WALLETS AND CONTINUOUS PRIVACY POOLS TO SEPARATE EVERY TRANSACTION FROM ITS SOURCE.YOUR FUNDS REMAIN SECURE, AND YOUR IDENTITY NEVER APPEARS ON-CHAIN.`,
+      a:
+        'APP uses disposable (ephemeral) wallets and continuous privacy pools to separate every transaction from its source.\nTransactions are routed through pooled liquidity to break address links and avoid persistent on-chain identifiers.',
     },
     {
       q: 'WHAT PRODUCTS DOES APP OFFER?',
-      a: 'PRIVACY SWAP, PRIVACY SEND, EPHEMERAL WALLETS, PRIVATE MARKETPLACE, AND A DEVELOPER-FRIENDLY API.',
+      a:
+        'Privacy Swap — anonymous token swaps.\nPrivacy Send — transfers without linking wallets.\nEphemeral Wallets — short-lived wallets for one-time use.\nPrivate Marketplace — private listings and trades.\nDeveloper API — programmatic integration of privacy features.',
     },
     {
       q: 'WHO CAN USE APP?',
-      a: 'ANYONE SEEKING STRONGER ON-CHAIN PRIVACY: INDIVIDUALS, BUILDERS, AND SERVICES THAT NEED TRANSACTION CONFIDENTIALITY.',
+      a:
+        'Anyone seeking stronger on-chain privacy: individuals, builders, and services.\nNo special approvals are required — just a compatible Solana wallet or an ephemeral wallet created in-app.',
     },
     {
-      q: 'HOW ARE APP TRANSACTIONS DIFFERENT FROM MIXERS?',
-      a: 'APP BUILDS PRIVACY INTO LIQUIDITY POOLS AND EPHEMERAL WALLETS, REMOVING ADDRESS LINKS RATHER THAN SIMPLE BATCH MIXING.',
+      q: 'HOW ARE WE DIFFERENT?',
+      a:
+        'We design privacy into liquidity and wallet flows rather than relying solely on batching or centralized mixers.\nThe focus is on unlinkability and minimizing on-chain traces.',
     },
     {
       q: 'HOW DO I GET STARTED?',
-      a: 'CONNECT A SOLANA WALLET, CREATE OR USE AN EPHEMERAL WALLET, AND FOLLOW THE ON-SCREEN FLOW. SEE THE DOCS FOR DETAILED STEPS AND DEVELOPER EXAMPLES.',
+      a:
+        'Connect a Solana wallet or create an ephemeral wallet inside the app.\nFollow the guided on-screen flow for swaps or sends and consult the docs for developer examples.',
     },
-  ];  
+  ];
 
   const [openFaq, setOpenFaq] = useState(-1); // start closed by default
 

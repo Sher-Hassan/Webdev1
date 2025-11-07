@@ -918,11 +918,13 @@ body::after{
 	.home-container-2,
 	.home-container-3,
 	.home-container-4,
-	.home-container-5,
 	.home-container-6{
 		min-height: calc(100vh - 56px);
 		padding-top: 12px;
 		padding-bottom: 12px;
+	}
+	.home-container-5{
+		min-height: auto;
 	}
 
 	/* prevent nav from overlapping hero headline */
@@ -976,6 +978,10 @@ body::after{
 
 @media (max-width: 900px){
 	.home-section-4{ height: 420px; }
+	.home-section-4 .grid-bg{ width: 900px; height: 600px; background-size: 36px 36px; }
+}
+@media (max-width: 500px){
+	.home-section-4{ height: 100vh; }
 	.home-section-4 .grid-bg{ width: 900px; height: 600px; background-size: 36px 36px; }
 }
 
@@ -1113,4 +1119,8 @@ body::after{
 	.faq-heading{ font-size: 32px; }
 	.faq-question{ padding: 16px 18px; }
 	.faq-body{ padding: 14px 18px 20px 18px; }
+}  
+@media (max-width: 500px){
+	.faq-heading{ font-size: 6vw; }
+
 }
