@@ -129,7 +129,22 @@ body::after{
 	position: relative;
 	top: 0;
 }
+.hero-1{
+	display: flex;
+}
+.hero-right{
+	width: 40%; /* keep globe on right like the mock */
+	display: flex;
+	justify-content: center;
 
+}
+
+.hero-right canvas{
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	width: 900px !important;
+}
 .cards-row{
 	margin-top: 3.5rem;
 	display: grid;
@@ -224,7 +239,10 @@ body::after{
 	display: flex;
 	gap: 1rem;
     padding-left: 10px;
+	z-index: 2;
+    position: relative;
 }
+
 
 /* Ensure the imported Btn components align nicely */
 .hero-ctas > *{

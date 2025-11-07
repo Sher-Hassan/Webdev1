@@ -4,6 +4,7 @@ import Btn2 from '../components/Btn2.jsx'
 import HomeCard from '../components/Home-Card.jsx'
 import card1 from '../assets/card1.svg'
 import MovingS from '../components/MovingS.jsx'
+import Globe from '../components/Globe.jsx';
 import '../styles/Home.css'
 
 export default function Home() {
@@ -142,7 +143,8 @@ export default function Home() {
   return (
     <>
     <section className="home-container-1">
-      <div className="hero"> 
+      <div className="hero">
+      <div className='hero-1'> 
         <div className="hero-left">
           <div className="headline">
             <h1 className="home-t home-t1"><span className='home-t-sp1'>NO</span><span className='home-t-sp2'>ADDRESSES,</span></h1>
@@ -160,6 +162,10 @@ export default function Home() {
             <Btn1 text="LAUNCH APP" />
             <Btn2 text="ABOUT APP" />
           </div>
+        </div>
+        <div className="hero-right">
+          <Globe />
+        </div>
         </div>
       </div>
 
