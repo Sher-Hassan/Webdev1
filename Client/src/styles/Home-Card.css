@@ -120,7 +120,7 @@
 
 .About-cards-row .HC-card{
 	position: relative;
-  background-image: url('src/assets/About-card-bg.png');
+  background-image: url('../assets/About-card-bg.png');
   background-size: cover;
   background-position: right;
   padding: 28px 15px;
@@ -159,3 +159,4 @@
   max-width: 100%;
 
 }
+
