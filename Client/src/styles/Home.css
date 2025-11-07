@@ -466,7 +466,7 @@ body::after{
 	width: 100%;
 	max-width: 100vw;
 	/* use a viewport-relative height but cap at the design's 640px */
-	height: min(64vh, 640px);
+	height: max(64vh, 640px);
 	background: #000;
 	position: relative;
 	overflow: hidden;
@@ -1122,5 +1122,6 @@ body::after{
 }  
 @media (max-width: 500px){
 	.faq-heading{ font-size: 6vw; }
+
 
 }
