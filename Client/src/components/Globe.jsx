@@ -1,4 +1,4 @@
-import "../styles/globe.css";
+import "../styles/Globe.css";
 
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";

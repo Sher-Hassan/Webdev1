@@ -1291,3 +1291,39 @@ body::after{
 @media (prefers-reduced-motion: reduce){
 	.CTA-heading .CTA-word{ animation: none; transform: none; opacity: 1; filter: none }
 }
+
+/* Custom scrollbar styling: yellow thumb on black track
+   - Chromium / WebKit (Chrome, Edge, Safari)
+   - Firefox via scrollbar-color
+*/
+/* Thumb: var(--yellow) (#ffd900) | Track: var(--black) */
+*::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--black);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--yellow);
+	border-radius: 8px;
+	border: 3px solid transparent; /* creates padding around the thumb */
+	background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	filter: brightness(1.05);
+}
+
+/* Firefox */
+* {
+	scrollbar-width: thin; /* auto | thin | none */
+	scrollbar-color: var(--yellow) var(--black); /* thumb track */
+}
+
+/* Optional: better contrast when focused (keyboard users) */
+*::-webkit-scrollbar-thumb:focus, *::-webkit-scrollbar-thumb:active {
+	outline: 2px solid rgba(255,217,0,0.15);
+}
