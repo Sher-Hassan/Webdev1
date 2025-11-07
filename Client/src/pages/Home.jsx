@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Btn1 from '../components/Btn1.jsx'
 import Btn2 from '../components/Btn2.jsx'
 import HomeCard from '../components/Home-Card.jsx'
@@ -7,6 +7,47 @@ import MovingS from '../components/MovingS.jsx'
 import '../styles/Home.css'
 
 export default function Home() {
+  const aboutRef = useRef(null)
+  const [aboutInView, setAboutInView] = useState(false)
+
+  const ctaRef = useRef(null)
+  const [ctaInView, setCtaInView] = useState(false)
+
+  useEffect(() => {
+    if (!aboutRef.current) return
+    const el = aboutRef.current
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAboutInView(true)
+            obs.disconnect()
+          }
+        })
+      },
+      { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!ctaRef.current) return
+    const el = ctaRef.current
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCtaInView(true)
+            obs.disconnect()
+          }
+        })
+      },
+      { root: null, rootMargin: '0px 0px -20% 0px', threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
   const products = [
     {
       id: 'swap',
@@ -104,8 +145,8 @@ export default function Home() {
       <div className="hero"> 
         <div className="hero-left">
           <div className="headline">
-            <h1 className="home-t home-t1"><span>NO</span><span>ADDRESSES,</span></h1>
-            <h1 className="home-t home-t2"><span>ONLY</span><span>PRIVACY.</span></h1>
+            <h1 className="home-t home-t1"><span className='home-t-sp1'>NO</span><span className='home-t-sp2'>ADDRESSES,</span></h1>
+            <h1 className="home-t home-t2"><span className='home-t-sp3'>ONLY</span><span className='home-t-sp4'>PRIVACY.</span></h1>
 
           </div>
 
@@ -152,11 +193,11 @@ export default function Home() {
          <p className="About-sub">
             /ABOUT APP
           </p>
-          <div className="About-headline">
-            <h1 className="About-t About-t1 About-t-all"><span className='About-Words'>WE</span><span className='About-Words'>PROVIDE</span><span className='About-Words'>A</span><span className='About-Words'>PRIVACY</span></h1>
-            <h1 className="About-t About-t2 About-t-all"><span className='About-Words'>LAYER</span><span className='About-Words'>THAT</span><span className='About-Words'>SECURES</span></h1>
-            <h1 className="About-t About-t2 About-t-all"><span className='About-Words'>YOUR</span><span className='About-Words'>ACTIVITY</span><span className='About-Words'>AND</span></h1>
-            <h1 className="About-t About-t2 About-t-all"><span className='About-Words'>REMOVES</span><span className='About-Words'>YOUR</span><span className='About-Words'>TRACE</span></h1>
+          <div className={`About-headline ${aboutInView ? 'in-view' : ''}`} ref={aboutRef}>
+            <h1 className="About-t About-t1 About-t-all"><span className='About-Words about-w-1'>WE</span><span className='About-Words about-w-2'>PROVIDE</span><span className='About-Words about-w-3'>A</span><span className='About-Words about-w-4'>PRIVACY</span></h1>
+            <h1 className="About-t About-t2 About-t-all"><span className='About-Words about-w-5'>LAYER</span><span className='About-Words about-w-6'>THAT</span><span className='About-Words about-w-7'>SECURES</span></h1>
+            <h1 className="About-t About-t2 About-t-all"><span className='About-Words about-w-8'>YOUR</span><span className='About-Words about-w-9'>ACTIVITY</span><span className='About-Words about-w-10'>AND</span></h1>
+            <h1 className="About-t About-t2 About-t-all"><span className='About-Words about-w-11'>REMOVES</span><span className='About-Words about-w-12'>YOUR</span><span className='About-Words about-w-13'>TRACE</span></h1>
           </div>
         </div>
       </div>
@@ -222,8 +263,10 @@ export default function Home() {
       <div className="home-section-4">
         <div className="grid-bg" aria-hidden="true"></div>
 
-        <div className="CTA-heading">
-          <h1>EXPLORE THE FUTURE OF<br/> PRIVACY ON SOLANA AND<br/>ACCESS APP DOCS TODAY</h1>
+        <div className={`CTA-heading ${ctaInView ? 'in-view' : ''}`} ref={ctaRef}>
+          <h1 className="CTA-line"><span className="CTA-word cta-w-1">EXPLORE</span> <span className="CTA-word cta-w-2">THE</span> <span className="CTA-word cta-w-3">FUTURE</span> <span className="CTA-word cta-w-4">OF</span></h1>
+          <h1 className="CTA-line"><span className="CTA-word cta-w-5">PRIVACY</span> <span className="CTA-word cta-w-6">ON</span> <span className="CTA-word cta-w-7">SOLANA</span> <span className="CTA-word cta-w-8">AND</span></h1>
+          <h1 className="CTA-line"><span className="CTA-word cta-w-9">ACCESS</span> <span className="CTA-word cta-w-10">APP</span> <span className="CTA-word cta-w-11">DOCS</span> <span className="CTA-word cta-w-12">TODAY</span></h1>
         </div>
 
         <div className="CTA">
