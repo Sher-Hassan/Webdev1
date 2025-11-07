@@ -937,13 +937,15 @@ body::after{
 	/* About cards: stack into a single column and reduce height so they stay on-screen */
 	.About-cards-row{ grid-template-columns: 1fr; padding-top: 40px; gap: 12px }
 	.About-Card{ height: auto; min-height: 180px }
-	.About-sub{ padding-top: 24px }
+	.About-sub{ padding-top: 24px }  
 
 	/* Mobile hero layout to match reference (390x640): large stacked headline, full-width CTAs */
 	.home-container-1{ padding-top: 14px; padding-bottom: 18px }
 	.hero-left{ width: 100%; padding-left: 14px; padding-right: 14px }
-	.home-t{ font-size: clamp(34px, 9.5vw, 60px); line-height: 1; letter-spacing: 0.02em; }
-	.home-t1, .home-t2{ display: block }
+	.home-t{ font-size: clamp(34px, 12.5vw, 60px); line-height: 1; letter-spacing: 0.02em; font-weight: 600; }  
+	.headline{ margin: 2rem 0}   
+	.cards-row{ margin-top: 20vw; }
+	.home-t1, .home-t2{ display: block }  
 	.home-t1 span, .home-t2 span{ display: block }
 	.hero-sub{ margin-top: 10px; font-size: 0.92rem; max-width: 100%; padding-left: 0 }
 
@@ -955,7 +957,6 @@ body::after{
 	.hero-ctas .Btn2-slide{ padding: 12px 12px }
 
 	/* give some breathing room below CTAs before next section */
-	.cards-row{ margin-top: 18px }
 }
 
 /* Additional tweaks for the About pretitle and headline on very small screens */
